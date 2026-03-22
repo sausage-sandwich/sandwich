@@ -35,13 +35,12 @@ class Recipe < ApplicationRecord
     return if recipe_ingredients.blank?
     return unless can_calculate_nutrition_fact?
 
-    @nutrition_fact ||= begin
-      total_weight_g = recipe_ingredients.sum(&:weight_g)
+    total_weight_g = recipe_ingredients.sum(&:weight_g)
+    return if total_weight_g.zero?
 
-      return if total_weight_g.zero?
-
-      recipe_ingredients.map(&:nutrition_fact).inject(&:+).scale(BigDecimal('100') / total_weight_g)
-    end
+    # rubocop:disable Performance/Sum
+    recipe_ingredients.map(&:nutrition_fact).inject(&:+).scale(BigDecimal('100') / total_weight_g)
+    # rubocop:enable Performance/Sum
   end
 
   def to_param

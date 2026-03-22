@@ -38,10 +38,10 @@ class PasswordsController < ApplicationController
   private
 
   def recover_password_params
-    params.require(:password_reset).permit(:email)
+    params.expect(password_reset: [:email])
   end
 
   def password_reset_params
-    params.require(:password_reset).permit(:token_value, :password, :password_confirmation)
+    params.expect(password_reset: %i[token_value password password_confirmation])
   end
 end

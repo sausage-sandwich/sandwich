@@ -29,7 +29,9 @@ class PasswordResetForm
   end
 
   def token
-    @token ||= Token.find_by(value: token_value)
+    return @token if defined?(@token)
+
+    @token = Token.find_by(value: token_value)
   end
 
   def all_error_messages

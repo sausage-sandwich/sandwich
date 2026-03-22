@@ -2,8 +2,16 @@
 
 module Profile
   class RecipesController < Profile::ApplicationController
+    def show
+      @recipe = current_user.recipes.find_by!(slug: params[:slug])
+    end
+
     def new
       @recipe = Recipe.new
+    end
+
+    def edit
+      @recipe = current_user.recipes.find_by!(slug: params[:slug])
     end
 
     def create
@@ -15,10 +23,6 @@ module Profile
         @recipe = result.recipe
         render :new
       end
-    end
-
-    def edit
-      @recipe = current_user.recipes.find_by!(slug: params[:slug])
     end
 
     def edit_details
@@ -36,10 +40,6 @@ module Profile
       end
     end
 
-    def show
-      @recipe = current_user.recipes.find_by!(slug: params[:slug])
-    end
-
     def secret
       @recipes = Recipe.published.secret.page(params[:page]).per(16)
     end
@@ -51,7 +51,7 @@ module Profile
     private
 
     def recipe_params
-      params.require(:recipe).permit(:title, :body, :image, :description, :secret)
+      params.expect(recipe: %i[title body image description secret])
     end
   end
 end

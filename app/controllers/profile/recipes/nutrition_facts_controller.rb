@@ -23,7 +23,7 @@ module Profile
       private
 
       def recipe_ingredient_params
-        params.require(:recipe_ingredient).permit(:protein_g, :fat_g, :carbohydrates_g, :unit_g)
+        params.expect(recipe_ingredient: %i[protein_g fat_g carbohydrates_g unit_g])
       end
     end
   end

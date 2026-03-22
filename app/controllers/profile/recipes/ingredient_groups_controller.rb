@@ -12,6 +12,10 @@ module Profile
         @ingredient_group = current_recipe.ingredient_groups.new
       end
 
+      def edit
+        @ingredient_group = current_recipe.ingredient_groups.find(params[:id])
+      end
+
       # rubocop:disable Metrics/MethodLength
       def create
         @ingredient_group = current_recipe.ingredient_groups.new(ingredient_group_params)
@@ -29,13 +33,7 @@ module Profile
           end
         end
       end
-      # rubocop:enable Metrics/MethodLength
 
-      def edit
-        @ingredient_group = current_recipe.ingredient_groups.find(params[:id])
-      end
-
-      # rubocop:disable Metrics/MethodLength
       def update
         @ingredient_group = current_recipe.ingredient_groups.find(params[:id])
         @ingredient_group.update(ingredient_group_params)
@@ -55,7 +53,7 @@ module Profile
       private
 
       def ingredient_group_params
-        params.require(:ingredient_group).permit(:title)
+        params.expect(ingredient_group: [:title])
       end
     end
   end

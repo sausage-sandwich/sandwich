@@ -16,9 +16,9 @@ class NutritionFact
   end
 
   def calories
-    @calories ||= protein_g * ENERGY_BY_MACROS[:protein] +
-                  fat_g * ENERGY_BY_MACROS[:fat] +
-                  carbohydrates_g * ENERGY_BY_MACROS[:carbohydrates]
+    @calories ||= (protein_g * ENERGY_BY_MACROS[:protein]) +
+                  (fat_g * ENERGY_BY_MACROS[:fat]) +
+                  (carbohydrates_g * ENERGY_BY_MACROS[:carbohydrates])
   end
 
   def +(other)

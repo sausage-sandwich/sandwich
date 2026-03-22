@@ -37,7 +37,7 @@ module Profile
         private
 
         def recipe_ingredient_params
-          params.require(:recipe_ingredient).permit(:title, :quantity, :unit)
+          params.expect(recipe_ingredient: %i[title quantity unit])
         end
       end
     end

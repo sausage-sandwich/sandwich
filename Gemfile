@@ -5,11 +5,11 @@ source 'https://rubygems.org'
 ruby '~> 3.4'
 
 gem 'aasm'
+gem 'importmap-rails'
 gem 'pg', '~> 1.6'
 gem 'puma', '~> 7.2'
 gem 'rails', '~> 8.1'
 gem 'sass-rails', '>= 6'
-gem 'importmap-rails'
 
 gem 'bcrypt', '~> 3.1'
 gem 'bootstrap', '~> 5.3'
