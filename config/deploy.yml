@@ -1,0 +1,28 @@
+service: sandwich
+image: ghcr.io/sausage-sandwich/sandwich
+
+servers:
+  - sausage-sandwich.club
+
+proxy:
+  ssl: true
+  host: sausage-sandwich.club
+
+registry:
+  server: ghcr.io
+  username: sausage-sandwich
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+  clear:
+    RAILS_LOG_TO_STDOUT: "true"
+    RAILS_SERVE_STATIC_FILES: "true"
+
+ssh:
+  user: superuser
+
+builder:
+  arch: amd64

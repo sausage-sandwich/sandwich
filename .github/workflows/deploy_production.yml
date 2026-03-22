@@ -42,8 +42,16 @@ jobs:
       - name: Run tests
         run: bundle exec rspec
 
-      - name: Production deploy
-        uses: miloserdow/capistrano-deploy@master
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
         with:
-          target: production
-          deploy_key: ${{ secrets.DEPLOY_PRODUCTION }}
+          ssh-private-key: ${{ secrets.DEPLOY_PRODUCTION }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Deploy with Kamal
+        run: bundle exec kamal deploy
+        env:
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}

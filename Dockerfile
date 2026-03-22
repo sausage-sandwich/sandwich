@@ -3,7 +3,7 @@
 ##
 ## Common base with OS deps needed to build native gems and run the app
 ##
-FROM ruby:2.7.4-slim AS base
+FROM ruby:3.4.7-slim AS base
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     build-essential \
@@ -11,18 +11,14 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     git \
     libpq-dev \
     libvips-dev \
-    nodejs \
-    npm \
     ca-certificates \
-  && npm install -g yarn \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 
 ##
-## Dependencies stage (install gems + node modules once)
-## RAILS_ENV can be overridden at build time to include dev/test gems.
+## Dependencies stage (install gems once)
 ##
 FROM base AS deps
 
@@ -36,9 +32,6 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
       bundle config set --local without '' ; \
     fi \
   && bundle install --jobs 4 --retry 3
-
-COPY package.json package-lock.json ./
-RUN npm install
 
 
 ##
@@ -60,13 +53,11 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
 ##
 ## Runtime base (only runtime libs; no build-essential)
 ##
-FROM ruby:2.7.4-slim AS runtime
+FROM ruby:3.4.7-slim AS runtime
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     libpq5 \
     libvips42 \
-    nodejs \
-    npm \
     ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
