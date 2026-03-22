@@ -11,6 +11,7 @@ RUN apt-get update -qq && apt-get install -y --no-install-recommends \
     git \
     libpq-dev \
     libvips-dev \
+    libyaml-dev \
     ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
