@@ -23,9 +23,9 @@ jobs:
           sudo -u postgres createdb --owner=test sandwich_test
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.4.7
           bundler-cache: true
 
       - name: Install dependencies
@@ -40,10 +40,7 @@ jobs:
           RAILS_ENV=test bundle exec rails db:schema:load
 
       - name: Compile assets
-        run: |
-          npm install
-          yarn add check --files
-          RAILS_ENV=test bin/webpack
+        run: RAILS_ENV=test bundle exec rails assets:precompile
 
       - name: Run tests
         run: bundle exec rspec
