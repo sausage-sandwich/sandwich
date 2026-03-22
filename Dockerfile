@@ -44,6 +44,7 @@ ARG RAILS_ENV=production
 ENV RAILS_ENV=${RAILS_ENV}
 
 COPY . .
+RUN cp config/database.yml.example config/database.yml
 
 # Precompile assets only for production builds
 RUN --mount=type=secret,id=RAILS_MASTER_KEY \
