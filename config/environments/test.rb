@@ -38,8 +38,8 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :test
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_options = { host: 'sausage-sandwich.club' }
-  config.action_mailer.default_url_options = { host: 'sausage-sandwich.club' }
+  config.action_mailer.default_options = { host: 'hamsandwich.club' }
+  config.action_mailer.default_url_options = { host: 'hamsandwich.club' }
 
   config.active_support.deprecation = :stderr
 

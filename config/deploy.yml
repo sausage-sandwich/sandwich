@@ -2,11 +2,11 @@ service: sandwich
 image: ghcr.io/sausage-sandwich/sandwich
 
 servers:
-  - sausage-sandwich.club
+  - 138.68.124.8
 
 proxy:
   ssl: true
-  host: sausage-sandwich.club
+  host: 138.68.124.8
 
 registry:
   server: ghcr.io
@@ -22,7 +22,7 @@ env:
     RAILS_SERVE_STATIC_FILES: "true"
 
 ssh:
-  user: superuser
+  user: sandwich
 
 builder:
   arch: amd64

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@sausage-sandwich.club'
+  default from: 'no-reply@hamsandwich.club'
   layout 'mailer'
 end
