@@ -22,7 +22,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
         with:
-          ruby-version: 2.7
+          ruby-version: 3.4.7
           bundler-cache: true
 
       - name: Install dependencies
@@ -50,5 +50,3 @@ jobs:
         with:
           target: production
           deploy_key: ${{ secrets.DEPLOY_PRODUCTION }}
-
-
