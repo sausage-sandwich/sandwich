@@ -26,3 +26,5 @@ ssh:
 
 builder:
   arch: amd64
+  secrets:
+    - RAILS_MASTER_KEY

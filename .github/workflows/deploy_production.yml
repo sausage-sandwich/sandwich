@@ -51,7 +51,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Deploy with Kamal
-        run: bundle exec kamal deploy
+        run: bundle exec kamal deploy --verbose
         env:
           KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}

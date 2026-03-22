@@ -46,8 +46,11 @@ ENV RAILS_ENV=${RAILS_ENV}
 COPY . .
 
 # Precompile assets only for production builds
-RUN if [ "$RAILS_ENV" = "production" ]; then \
-      SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile ; \
+RUN --mount=type=secret,id=RAILS_MASTER_KEY \
+    if [ "$RAILS_ENV" = "production" ]; then \
+      RAILS_MASTER_KEY=$(cat /run/secrets/RAILS_MASTER_KEY) \
+      SECRET_KEY_BASE=placeholder \
+      bundle exec rails assets:precompile ; \
     fi
 
 
@@ -57,6 +60,7 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
 FROM ruby:3.4.7-slim AS runtime
 
 RUN apt-get update -qq && apt-get install -y --no-install-recommends \
+    imagemagick \
     libpq5 \
     libvips42 \
     ca-certificates \
