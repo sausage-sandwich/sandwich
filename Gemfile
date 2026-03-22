@@ -19,6 +19,7 @@ gem 'interactor'
 gem 'jbuilder', '~> 2.14'
 gem 'kamal', require: false
 gem 'kaminari'
+gem 'listen'
 gem 'redis'
 gem 'russian'
 gem 'shrine'
@@ -47,7 +48,6 @@ group :test do
 end
 
 group :development do
-  gem 'listen', '~> 3.10'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.1'
   gem 'web-console', '>= 4.3.0'
