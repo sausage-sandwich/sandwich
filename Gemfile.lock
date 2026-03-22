@@ -437,7 +437,7 @@ DEPENDENCIES
   jbuilder (~> 2.14)
   kamal
   kaminari
-  listen (~> 3.10)
+  listen
   pg (~> 1.6)
   pry-byebug
   puma (~> 7.2)
