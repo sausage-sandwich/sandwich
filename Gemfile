@@ -2,19 +2,22 @@
 
 source 'https://rubygems.org'
 
-gem 'aasm'
-gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 4.3'
-gem 'rails', '~> 6.1'
-gem 'sass-rails', '>= 6'
-gem 'webpacker'
+ruby '~> 3.4'
 
-gem 'bcrypt', '~> 3.1.7'
-gem 'bootstrap', '~> 5.0.1'
+gem 'aasm'
+gem 'pg', '~> 1.6'
+gem 'puma', '~> 7.2'
+gem 'rails', '~> 8.1'
+gem 'sass-rails', '>= 6'
+gem 'importmap-rails'
+
+gem 'bcrypt', '~> 3.1'
+gem 'bootstrap', '~> 5.3'
 gem 'honeybadger'
 gem 'hotwire-rails'
 gem 'interactor'
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.14'
+gem 'kamal', require: false
 gem 'kaminari'
 gem 'redis'
 gem 'russian'
@@ -24,9 +27,9 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
-gem 'image_processing', '~> 1.12'
+gem 'image_processing', '~> 1.14'
 
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '>= 1.23.0', require: false
 
 group :development, :test do
   gem 'factory_bot_rails'
@@ -44,15 +47,10 @@ group :test do
 end
 
 group :development do
-  gem 'capistrano', require: false
-  gem 'capistrano3-puma', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-rbenv', require: false
-  gem 'listen', '~> 3.2'
+  gem 'listen', '~> 3.10'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'spring-watcher-listen', '~> 2.1'
+  gem 'web-console', '>= 4.3.0'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

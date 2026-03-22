@@ -40,7 +40,7 @@ class Recipe < ApplicationRecord
 
       return if total_weight_g.zero?
 
-      recipe_ingredients.sum(&:nutrition_fact).scale(BigDecimal('100') / total_weight_g)
+      recipe_ingredients.map(&:nutrition_fact).inject(&:+).scale(BigDecimal('100') / total_weight_g)
     end
   end
 
