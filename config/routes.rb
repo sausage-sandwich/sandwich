@@ -36,4 +36,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'recipes#index'
+
+  get "up" => "rails/health#show", as: :rails_health_check
 end
