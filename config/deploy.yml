@@ -2,7 +2,15 @@ service: sandwich
 image: ghcr.io/sausage-sandwich/sandwich
 
 servers:
-  - 138.68.124.8
+  web:
+    hosts:
+      - 138.68.124.8
+    options:
+      # Postgres runs directly on the droplet's host OS, outside of Docker.
+      # The app container's own localhost/127.0.0.1 is a separate network
+      # namespace and can never reach it, so give the container a DNS name
+      # that resolves to the host machine instead.
+      add-host: "host.docker.internal:host-gateway"
 
 proxy:
   ssl: true
