@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+# Ensure the database exists and is fully migrated before the app boots.
+# Kamal replaces the container on every deploy and has no separate
+# "release phase", so this has to happen here rather than in a hook.
+./bin/rails db:prepare
+
+exec "${@}"
