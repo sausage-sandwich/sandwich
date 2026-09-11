@@ -4,7 +4,7 @@ image: ghcr.io/sausage-sandwich/sandwich
 servers:
   web:
     hosts:
-      - 138.68.124.8
+      - hamsandwich.club
     options:
       # Postgres runs directly on the droplet's host OS, outside of Docker.
       # The app container's own localhost/127.0.0.1 is a separate network
