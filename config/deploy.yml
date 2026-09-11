@@ -6,7 +6,7 @@ servers:
 
 proxy:
   ssl: true
-  host: 138.68.124.8
+  host: hamsandwich.club
   app_port: 3000
 
 registry:
